@@ -46,3 +46,13 @@ too, and the Cloudflare projects rebuild when `shared/lib/` changes.
 4. Call `rig.apply({ front: susp.wheelOffset('front'), rear: susp.wheelOffset('rear') })`.
    Build fork legs and swingarms as unit-height meshes (height 1 along Y) and pass them as
    `links`, so they stretch to follow the wheels.
+
+## Agent-readable sites
+
+`agent-markdown.js` is a build-only Vite plugin for public standalone games. It
+publishes each HTML entry's `.md` guide from that app's README and metadata,
+adds alternate links, and emits `/llms.txt`. It preserves Cloudflare headers and
+sets `text/markdown` for `.md` assets. Update the normal app README when controls
+or gameplay change; the next build updates its agent guide automatically. It
+adds no runtime dependencies or network requests. Use explicit `.md` URLs;
+`Accept: text/markdown` negotiation is not required or provided by static hosting.

@@ -1,3 +1,4 @@
+import { agentMarkdown } from '../../shared/lib/agent-markdown.js';
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
 
@@ -6,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 const here = (f) => fileURLToPath(new URL(f, import.meta.url));
 
 export default defineConfig({
+  plugins: [agentMarkdown({ appDir: fileURLToPath(new URL('.', import.meta.url)), origin: 'https://redlinemx.mattvalancy.com', sourceURL: 'https://github.com/mvalancy/csci-40_f26_demos/blob/main/apps/redline-mx/' })],
   root: here('.'),
   base: './',
   build: {
